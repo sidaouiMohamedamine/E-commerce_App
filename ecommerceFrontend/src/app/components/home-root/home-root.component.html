@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow sticky-top" >
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="#"><i class="fas fa-tachometer-slowest me-1"></i> Admin Dashboard</a>
+      <button class="navbar-toggler" style="margin-right:130px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+     </button>
+      <div class="justify-content-end navbar-expand" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item  dropdown" >
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fal fa-user-circle"></i>
+             </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end " aria-labelledby="navbarDropdownMenuLink" style="width: 500%;height:350%;" >
+              <li><a class="dropdown-item " href="#"><i class="fal fa-user me-1"></i>Profil</a></li>
+              <li><a class="dropdown-item " href="#"><i class="fas fa-cog me-1"></i>Setting</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item " href="#"><i class="fas fa-door-open me-1"></i>Log out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+<!--the sidebar code-->
+<div class="container-fluid " style="position: fixed;">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse vh-100" id="navbarNavDropdown"  [ngClass]="{ 'show': isShown }"style="position: fixed;">
+      <div class="position-sticky pt-3  ms-3 mt-2" >
+        <ul class="nav flex-column " style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+          <li class="nav-item mb-3 " style="white-space:nowrap;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            <a class="nav-link text-light" aria-current="page" >
+            <i class="fas fa-tachometer-slowest me-1"></i>Admin Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/adminHome" routerLinkActive="active">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/statistics" routerLinkActive="active">
+              <i class="fas fa-analytics"></i> Statistics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" [routerLink]="[{ outlets: { primary: ['products'],rootPages: ['products'] } }]"  routerLinkActive="active">
+              <i class="fab fa-product-hunt"></i>roducts
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/orders" routerLinkActive="active">
+              <i class="fas fa-sort-amount-down-alt"></i>Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" routerLink="/users" routerLinkActive="active">
+              <i class="fas fa-users"></i> Customers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" >
+              <i class="fab fa-cuttlefish"></i>ategory
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    </div>
+</div>
+      <!----------Content Page--------------->
+    <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
+      <div class="ms-1 mt-4 col-md-12 ">
+      </div>
+    </div>

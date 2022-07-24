@@ -1,0 +1,55 @@
+<!-- Modal -->
+<div class="modal fade rounded-0 " div class="modal fade" id="staticBackdrop"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered  ">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Sign In </h5>
+        <button type="button" class="btn-close btn-close-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img class=""  [src]="user" width="50%" height="50%" style="margin-left:23%;">
+        <form [formGroup]="form">
+            <div class="form-group">
+              <label class="form-label text-light">Email</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="far fa-envelope"></i></span>
+              <input class="form-control" type="email" name="email"  [ngClass]="form.get('email')?.touched ?'form-control is-invalid':''" id="email" formControlName="email">
+            </div>
+          </div>
+          <div class="alert alert-danger mt-2 p-2" *ngIf="form.get('email')?.touched">
+            email is invalid
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label text-light">Password</label>
+            <div class="input-group flex-nowrap ">
+              <span class="input-group-text" id="basic-addon1"><i class="fal fa-key"></i></span>
+            <input class="form-control" type="Password" name="password" formControlName="password"  [ngClass]="form.get('password')?.touched ?'form-control is-invalid':''"   id="password">
+          </div>
+          <div class="alert alert-danger mt-2 p-2" *ngIf="form.get('password')?.touched">
+            Password is invalid
+          </div>
+          <div class="mt-3 mb-1">
+            <label class="h6" for="exampleCheck1" style="color: grey; font-family:Georgia, 'Times New Roman', Times, serif;">Forget password ?</label>
+          </div>
+        </div>
+        <button type="button" class="btn btn-outline-light  w-100 mb-1 rounded-pill me-2" style="size: 32px;;" [disabled]="form.invalid">Log In
+          <span> <i class="fad fa-sign-in"></i></span>
+        </button>
+        <div style="margin-left:33%;">
+        <button type="button" class="btn btn-outline-danger rounded-pill me-2 mt-2">
+          <i class="fab fa-google-plus-g"></i>
+        </button>
+        <button type="button" class="btn btn-outline-primary rounded-pill mt-2 me-2">
+          <i class="fab fa-facebook"></i>
+        </button>
+        <button type="button" class="btn btn-outline-info mt-2 rounded-pill">
+          <i class="fab fa-twitter"></i>
+        </button>
+      </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

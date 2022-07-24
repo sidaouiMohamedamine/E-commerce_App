@@ -1,0 +1,96 @@
+<!--Bouton et fenetre modal pour ajouter un nouveau produit-->
+<button type="button" class="btn btn-outline-dark me-1 mt-2 rounded-0 " data-bs-toggle="modal" data-bs-target="#ajouter" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Add product</button>
+<div class="modal fade" id="ajouter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog rounded-0">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-family:cursive">Add new <i class="fab fa-product-hunt"></i>roduct</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton></button>
+      </div>
+      <!--Forumulaire d'ajout d'un produit-->
+      <div class="modal-body" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+        <form [formGroup]="form" >
+        <div>
+          <div class="mb-2">
+            <label for="ref" class="form-label text-muted">Product ref</label>
+            <input type="text" class="form-control rounded-0 " id="ref" formControlName="ref" [ngClass]="form.get('ref')?.touched && form.get('ref')?.invalid ?'form-control is-invalid' :'' ">
+          </div>
+          <div class="alert alert-danger" *ngIf="form.get('ref')?.touched && form.get('ref')?.invalid">
+            Product Reference field is required
+          </div>
+          <div class="mb-2">
+            <label for="titre" class="form-label text-muted">Product Title</label>
+            <input type="text" class="form-control rounded-0 " id="titre" formControlName="titre" [ngClass]="form.get('titre')?.touched && form.get('titre')?.invalid ?'form-control is-invalid' :'' ">
+          </div>
+          <div class="alert alert-danger" *ngIf="form.get('titre')?.touched && form.get('titre')?.invalid">
+            Product title field is required
+          </div>
+          <div class="mb-2">
+            <label for="description" class="form-label text-muted">Description</label>
+            <textarea type="text" class="form-control rounded-0" id="description" rows="3" formControlName="description" [ngClass]="form.get('description')?.touched && form.get('description')?.invalid ?'form-control is-invalid':''"></textarea>
+          </div>
+          <!--Affichage de message d'érreur du champ description-->
+          <div class="alert alert-danger" *ngIf="form.get('description')?.touched && form.get('description')?.invalid">
+            description field is required
+          </div>
+          <!---------------Liste des catégories sont affiché de la base de donneé------------->
+          <div class="mb-2">
+            <label for="category" class="form-label text-muted">Category</label>
+            <select
+                  class="form-select rounded-0"
+                  aria-label="Default select example"
+                  id="category" formControlName="categorie"
+                  [ngClass]="form.get('categorie')?.touched && form.get('categorie')?.invalid ? 'form-select is-invalid' : ''"
+                  >
+              <option value="select" >--Select--</option>
+              <option *ngFor="let tab of tabCat;let i=index" [ngValue]="tab">{{tab.nomCat}}</option>
+            </select>
+          </div>
+          <div class="alert alert-danger" *ngIf="form.get('category')?.touched && form.get('category')?.invalid">
+            Category field is required
+          </div>
+          <div class="row">
+          <div class="mb-2 col-6">
+            <label for="prix" class="form-label text-muted">Price</label>
+            <input type="number" class="form-control rounded-0" id="prix" formControlName="prix" [ngClass]="form.get('prix')?.touched && form.get('prix')?.invalid ? 'form-control is-invalid':'' ">
+          <!--Affichage de message d'érreur de prix-->
+          <div class="alert alert-danger mt-2" *ngIf="form.get('prix')?.touched && form.get('prix')?.invalid">
+            Price field is required
+          </div>
+        </div>
+
+          <div class="mb-2 col-6">
+            <label for="stock" class="form-label text-muted">Stock</label>
+            <input type="number" class="form-control rounded-0" id="stock" formControlName="stock" [ngClass]="form.get('stock')?.touched && form.get('stock')?.invalid ?'form-control is-invalid':''" >
+            <div class="alert alert-danger mt-2" *ngIf=" form.get('stock')?.touched && form.get('stock')?.invalid">
+              stock field is required
+            </div>
+
+          </div>
+        </div>
+          <div class="mb-2">
+            <label for="img" class="form-label text-muted">Product picture</label>
+            <input
+             class="form-control rounded-0"
+             type="file"
+             id="img"
+             accept="image/*"
+             formControlName="image"
+             [ngClass]="form.get('image')?.touched && form.get('image')?.invalid ?'form-control is-invalid':''"
+             (change)="onSelectFile($event)"
+             >
+             <img [src]="imgURL" height="200" class="mt-2" *ngIf="imgURL">
+          </div>
+          <div class="alert alert-danger" *ngIf="form.get('image')?.touched && form.get('image')?.invalid">
+            picture field is required
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary rounded-0" (click)="addProduct()" >Add product</button>
+      </div>
+    </div>
+  </div>
+</div>

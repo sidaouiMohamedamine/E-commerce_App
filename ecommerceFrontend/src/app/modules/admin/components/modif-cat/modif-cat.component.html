@@ -1,0 +1,25 @@
+<!-- ----------------Modal --------------------->
+<div class="modal fade" id="modifier" tabindex="-1" aria-labelledby="modifier" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-union"></i>pdate <i class="fas fa-union"></i>ategory</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton></button>
+      </div>
+      <div class="modal-body">
+        <form  >
+          <div>
+            <div class="mb-2">
+              <label for="nomCat" class="form-label text-muted">Category name</label>
+              <input type="text" class="form-control rounded-0 " >
+            </div>
+       </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary rounded-0" (click)="modifier()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

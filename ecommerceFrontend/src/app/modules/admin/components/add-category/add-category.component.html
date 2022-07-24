@@ -1,0 +1,30 @@
+<!--Bouton et fenetre modal pour ajouter un nouveau produit-->
+<button type="button" class="btn btn-outline-dark me-1 mt-2 rounded-0 " data-bs-toggle="modal" data-bs-target="#ajouter" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Add Category</button>
+<div class="modal fade" id="ajouter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog rounded-0">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="font-family:cursive">Add new <i class="fab fa-cuttlefish"></i>ategory</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton></button>
+      </div>
+      <!--Forumulaire d'ajout d'un produit-->
+      <div class="modal-body" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+        <form #f="ngForm">
+          <div class="mb-2">
+            <div class="form-group mb-3">
+              <label class="label-form fw-bold text-muted mb-1" for="nomCat">Category</label>
+              <input type="text" class="form-control " id="nomCat" name="nomCat" required ngModel #fn="ngModel" [(ngModel)]="categorie.nomCat">
+              </div>
+              <div class="alert alert-danger rounded-0 " *ngIf="fn.invalid && fn.touched">
+                Function field required !
+           </div>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary rounded-0" (click)="add()">Add category</button>
+      </div>
+    </div>
+  </div>
+</div>

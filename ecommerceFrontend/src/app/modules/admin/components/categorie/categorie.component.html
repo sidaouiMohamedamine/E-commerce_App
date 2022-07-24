@@ -1,0 +1,48 @@
+
+<app-add-category></app-add-category>
+<!--<app-modif-cat [idCat]="idMod" [categorie]="categorie"></app-modif-cat>-->
+<div class="conatiner">
+  <div class="row">
+    <div class="col-3">
+      <table class="table caption-top table-striped table-hover" style="margin-left:100%;">
+        <caption class="fw-bold">List of Category</caption>
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category </th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let t of tabCat">
+            <th scope="row">{{t.idCat}}</th>
+            <td>{{t.nomCat}}</td>
+            <td>
+           <!-- <button type="button" class="btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#modifier" (click)="getCatById(t.idCat)"><i class="far fa-pen"></i></button>-->
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"  data-bs-target="#supp" (click)="identifier(t.idCat)"><i class="far fa-trash-alt"></i></button>
+           </td>
+    <!----------------------------------------------------------------Modal pour la suppression d'un produit--------------------------------------------->
+     <div class="modal fade" id="supp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete <i class="fab fa-product-hunt"></i>roduct</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton></button>
+          </div>
+          <div class="modal-body h5" style="font-family:'Times New Roman', Times, serif">
+             Are you sure to delete this category !!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary rounded-0 " data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger  rounded-0" (click)="delete(t.idCat)" >Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------->

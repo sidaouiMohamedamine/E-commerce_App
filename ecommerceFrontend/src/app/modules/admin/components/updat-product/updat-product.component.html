@@ -1,0 +1,65 @@
+<!--------------------------------------------------------------------- Modal pour la modification d'un produit----------------------------->
+<div class="modal fade" id="modifier" tabindex="-1" aria-labelledby="modifier" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-union"></i>pdate <i class="fab fa-product-hunt"></i>roduct</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formM" onsubmit="onSubmit()">
+          <div>
+            <div class="mb-2">
+              <label for="refU" class="form-label text-muted">Product ref</label>
+              <input type="text" class="form-control rounded-0 " id="refU" formControlName="refU" [(ngModel)]="product.ref">
+            </div>
+            <div class="mb-2">
+              <label for="nomU" class="form-label text-muted">Product name</label>
+              <input type="text" class="form-control rounded-0 " id="nomU"  formControlName="nomU" [(ngModel)]="product.titre" >
+            </div>
+            <div class="mb-2">
+              <label for="titreU" class="form-label text-muted">Product Title</label>
+              <input type="text" class="form-control rounded-0 " id="titreU" formControlName="titreU" [(ngModel)]="product.titre" >
+            </div>
+            <div class="mb-2">
+              <label for="descriptionU" class="form-label text-muted">Description</label>
+              <textarea class="form-control rounded-0" id="descriptionU" rows="3" formControlName="descriptionU" [(ngModel)]="product.description"></textarea>
+            </div>
+            <div class="mb-2">
+              <label for="categoryU" class="form-label text-muted">Category</label>
+              <select class="form-select rounded-0" aria-label="Default select example" id="categorieU" formControlName="categorieU" >
+                <option>---Select---</option>
+                <option value="select"*ngFor="let tab of tabCat" >{{tab.nomCat}}</option>
+              </select>
+            </div>
+            <div class="row">
+              <div class="mb-2 col-6">
+                <label for="prixU" class="form-label text-muted">Price</label>
+                <input type="number" class="form-control rounded-0" id="prixU" formControlName="prixU" [(ngModel)]="product.prix" >
+            </div>
+              <div class="mb-2 col-6">
+                <label for="stockU" class="form-label text-muted">Stock</label>
+                <input type="number" class="form-control rounded-0" id="stockU" formControlName="stockU" [(ngModel)]="product.stock" >
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="img" class="form-label text-muted" >Product picture</label>
+              <input
+               class="form-control rounded-0"
+               type="file"
+               id="img"
+               accept="image/*"
+               >
+
+            </div>
+       </div>
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger rounded-0" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary rounded-0" (click)="modifier()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+²

@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="container-fluid">
+<div class="row">
+  <!------------------------Fil d'ariane------------------------------->
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb ms-3 mt-5 alert alert-primary" >
+          <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Details</li>
+        </ol>
+      </nav>
+    </div>
+  <!--colonne pour les images-->
+  <div class="col">
+    <div class="ms-3">
+      <img class="card-img-top border border-3 border-dark p-0 mb-5" src="{{'http://localhost:8080/api'+'/ImageProduit/'+id}}" width="25%" height="25%">
+    </div>
+  </div>
+  <div class="col">
+    <div class="h4" style="margin-top:10%;color: blue;">
+      {{produit.titre}}
+    </div>
+    <div class="h5">
+      Reference:<span class="ms-2 mt-4 " style="color:dimgray;">{{produit.ref}}</span>
+      <span class="ms-2 border-start border-4 border-dark" style="color: #00a400;">
+        <!--Pour l'affichage du stock de produit -->
+      <span class="ms-3"  *ngIf="produit.stock!=0">IN STOCK</span>
+      <span *ngIf="produit.stock==0" class="text-danger ms-3">EXPIRED</span>
+    </span>
+  </div>
+    <!--Affichage de prix-->
+    <div class="mt-3 h2 ">
+      <span class="me-1 h5 ">Price : </span>
+      <span class="text-danger">{{produit.prix}}</span>
+      <span class="ms-2 text-danger">TND</span>
+    </div>
+    <hr>
+    <!--Description du produit-->
+    <div class="mt-3 h6 mt-1">
+      {{produit.description}}
+    </div>
+    <!--Espace pour ajouter des produit au panier-->
+    <div class="row">
+      <div class="col">
+        <div class="mt-4" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+          <button class="btn btn-outline-success rounded-0">Ajouter Au Panier</button>
+        </div>
+      </div>
+      <div class="col mt-4 h5 ">
+        Stock :<span class="ms-2 text-success">{{produit.stock}}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" style="margin-left: 25%;">
+
+        <button class="mt-5 btn btn-outline-primary  rounded-pill">
+          <i class="fab fa-facebook "></i>
+        </button>
+        <button class="mt-5 ms-5 btn btn-outline-danger  rounded-pill">
+          <i class="fab fa-instagram"></i>
+        </button>
+        <button class="mt-5 ms-5 btn btn-outline-info  rounded-pill">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,86 @@
+<app-add-product></app-add-product>
+<app-updat-product [id]="idMod" [product]="product"></app-updat-product>
+<div class="container-fluid">
+  <div class="row">
+  <div class="col">
+  </div>
+    <table class="table table-striped table-hover caption-top">
+      <caption class="h4">
+      <span class="">List of products</span>
+      <div class="col-4">
+        <input id="table-complete-search" type="search" class="form-control mt-3  " name="searchTerm" placeholder="Search specific product" [(ngModel)]="ref" (ngModelChange)="Search()" >
+      </div>
+      </caption>
+  <thead style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+    <tr>
+      <th scope="col">Ref</th>
+      <th scope="col">Title</th>
+      <th scope="col" (click)="sort('prix')">Price <i class="fa fa-sort"></i></th>
+      <th scope="col">Stock</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr *ngFor="let t of tab | paginate : {
+      itemsPerPage: pageSize,
+      currentPage: offset,
+      totalItems: totalLength
+    } | orderBy :key:reverse ">
+      <td scope="row">{{t.ref}}</td>
+      <td>{{t.titre}}</td>
+      <td>{{t.prix}}</td>
+      <td>{{t.stock}}</td>
+      <td>{{t.description}}</td>
+      <td>
+        <img src="{{'http://localhost:8080/api'+'/ImageProduit/'+t.id}}"
+         alt="erreur"
+         class="card-img-top img-responsive"
+         style = "height :180px;width:fil-content"
+        >
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline-primary me-1 mb-1" data-bs-toggle="modal" data-bs-target="#modifier" (click)="getById(t.id)"><i class="far fa-pen"></i></button>
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"  data-bs-target="#supp" (click)="identifier(t.id)"><i class="far fa-trash-alt"></i></button>
+      </td>
+     <!--------------------------------------------------------Modal pour la suppression d'un produit---------------------------------------->
+     <div class="modal fade" id="supp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete <i class="fab fa-product-hunt"></i>roduct</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closebutton></button>
+          </div>
+          <div class="modal-body h5" style="font-family:'Times New Roman', Times, serif">
+             Are you sure to delete this product !!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary rounded-0 " data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger  rounded-0" (click)="delete(t.id)" >Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="d-flex justify-content-end p-2 mb-5">
+ <!---------------------------------------------------------------------Pagination place------------------------------------------------------------------->
+  <div class="me-5 mt-1">
+    <pagination-controls
+    (pageChange)="handlePageChange($event)"
+      previousLabel="Previous"
+      nextLabel="Next"
+      [responsive]="true"
+    >
+    </pagination-controls>
+  </div>
+  <select class="form-select" style="width: auto" name="pageSize" (change)="handlePageSizeChange($event)">
+    <option *ngFor="let size of pageSizes" [ngValue]="size">
+      {{ size }}
+    </option>
+  </select>
+</div>

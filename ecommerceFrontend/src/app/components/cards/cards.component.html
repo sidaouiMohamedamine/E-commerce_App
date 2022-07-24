@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-2"
+     *ngFor="let t of tab | paginate : {
+            itemsPerPage: pageSize,
+            currentPage: offset,
+            totalItems: totalLength
+          }
+
+          "
+    >
+      <div class="card" style="width: 18rem;">
+       <img lass="card-img-top" src="{{'http://localhost:8080/api'+'/ImageProduit/'+t.id}}"
+        alt="erreur"
+        class="card-img-top img-responsive"
+        style = "height :180px;width:fil-content"
+       >
+        <div class="card-body">
+          <h5 class="card-title">{{t.titre}}</h5>
+          <p class="card-text text-danger h5 fw-bold" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{t.prix}}
+            <span class="ms-1">TND</span>
+          </p>
+          <button href="#" class="btn btn-outline-dark  rounded-0" style="margin-left:40%;" (click)="detail(t.id)"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--BoutonGroup pour la pagination et l'affichage d'autres produits-->
+<div style="margin-left:73%;">
+  <pagination-controls
+      (pageChange)="handlePageChange($event)"
+      previousLabel="Previous"
+      nextLabel="Next"
+      [responsive]="true"
+
+      >
+  </pagination-controls>
+
+<!--Pour l'affichage de nombre de produit par page-->
+<div class="container">
+<div class="row">
+  <div class="col">
+    <div class="form-group mt-4">
+      <label class="h6" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Produit par page:</label>
+    </div>
+    <div class="col">
+      <div class="col-3" style="margin-left:40%;margin-top: -11%;">
+        <select class="form-select mt-2" (change)="handlePageSizeChange($event)">
+          <option *ngFor="let size of pageSizes" [ngValue]="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+  </div>
+  </div>
+
+</div>
+
+
